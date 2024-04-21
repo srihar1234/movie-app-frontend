@@ -34,7 +34,7 @@ const NewMovie = () => {
     e.preventDefault();
   
     try {
-      const response = await axios.post('hhttps://imdb-backend-qm2u.onrender.com/add/movie', formData);
+      const response = await axios.post('https://imdb-backend-qm2u.onrender.com/add/movie', formData);
   
       if (response.status === 201) {
         setFormData({
