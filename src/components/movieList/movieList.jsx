@@ -11,7 +11,6 @@ const MovieList = () => {
         axios.get('https://imdb-backend-qm2u.onrender.com/movies')
         .then(response => {
             setPopularMovies(response.data);
-            console.log(response.data);
         })
         .catch(error => {
             console.error('Error fetching popular movies:', error);

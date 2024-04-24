@@ -51,7 +51,7 @@ const Movie = () => {
                         <div className="movie__name">{currentMovieDetail ? currentMovieDetail.title : ""}</div>
                         <div className="movie__tagline">{currentMovieDetail ? currentMovieDetail.tagline : ""}</div>
                         <div className="movie__rating">
-                            {currentMovieDetail ? currentMovieDetail.vote_average : ""} <i class="fas fa-star" />
+                            {currentMovieDetail ? currentMovieDetail.vote_average : ""}/10
                         </div>
                         <div className="movie__releaseDate">{currentMovieDetail ? "Release date: " + currentMovieDetail.release_date : ""}</div>
                         <div className="movie__genres">

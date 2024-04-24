@@ -22,7 +22,6 @@ const NewMovie = () => {
     axios.get('https://imdb-backend-qm2u.onrender.com/movies')
     .then(response => {
         setMovies(response.data);
-        console.log(response.data);
     })
     .catch(error => {
         console.error('Error fetching popular movies:', error);
@@ -30,33 +29,41 @@ const NewMovie = () => {
 }, []);
 
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-  
-    try {
-      const response = await axios.post('https://imdb-backend-qm2u.onrender.com/add/movie', formData);
-  
-      if (response.status === 201) {
-        setFormData({
-          title: '',
-          release_date: '',
-          vote_average: '',
-          overview: '',
-          cast: '',
-          prod: '',
-          img: '',
-        });
-        if (response.data && response.data.includes('successfully')) {
-          alert('Movie added successfully!');
-        } else {
-          alert('Movie added successfully!');
-        }
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  const isAnyFieldEmpty = Object.values(formData).some(value => value === '');
+
+  if (isAnyFieldEmpty) {
+    alert('Please fill in all fields before submitting.');
+    return;
+  }
+
+  try {
+    const response = await axios.post('https://imdb-backend-qm2u.onrender.com/add/movie', formData);
+
+    if (response.status === 201) {
+      setFormData({
+        title: '',
+        release_date: '',
+        vote_average: '',
+        overview: '',
+        cast: '',
+        prod: '',
+        img: '',
+      });
+      if (response.data && response.data.includes('successfully')) {
+        alert('Movie added successfully!');
+      } else {
+        alert('Movie added successfully!');
       }
-    } catch (error) {
-      console.error('Error adding movie:', error);
-      alert('Failed to add movie. Please try again later.');
     }
-  };
+  } catch (error) {
+    console.error('Error adding movie:', error);
+    alert('Failed to add movie. Please try again later.');
+  }
+};
+
   
 
   

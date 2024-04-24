@@ -14,7 +14,6 @@ const Home = () => {
         axios.get('https://imdb-backend-qm2u.onrender.com/movies')
         .then(response => {
             setPopularMovies(response.data);
-            console.log(response.data);
         })
         .catch(error => {
             console.error('Error fetching popular movies:', error);
@@ -33,7 +32,7 @@ const Home = () => {
                 >
                     {
                         popularMovies.map((movie,idx) => (
-                            <Link style={{textDecoration:"none",color:"white"}} to={`/movie/${idx}`} >
+                            <Link key={idx} style={{textDecoration:"none",color:"white"}} to={`/movie/${idx}`} >
                                 <div className="posterImage">
                                     <img src={movie.img} alt="img" />
                                 </div>

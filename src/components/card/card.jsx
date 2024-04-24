@@ -4,7 +4,6 @@ import "./card.css"
 import { Link } from "react-router-dom"
 
 const Cards = ({movie,idx}) => {
-    console.log(`index is ${idx}`);
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
